@@ -12,5 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.blog');
 });
+
+Route::get('post', function () {
+    return view('frontend.post');
+})->name('post');
