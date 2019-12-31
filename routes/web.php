@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::get('post', function () {
     return view('frontend.post');
 })->name('post');
+
+Route::get('admin/home', function () {
+    return view('backend.home');
+});
