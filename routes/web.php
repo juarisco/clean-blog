@@ -22,3 +22,15 @@ Route::get('post', function () {
 Route::get('admin/home', function () {
     return view('backend.home');
 });
+
+Route::get('admin/post', function () {
+    return view('backend.post.post');
+});
+
+Route::get('admin/tag', function () {
+    return view('backend.tag.tag');
+});
+
+Route::get('admin/category', function () {
+    return view('backend.category.category');
+});
