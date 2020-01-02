@@ -19,18 +19,30 @@ Route::get('post', function () {
     return view('frontend.post');
 })->name('post');
 
-Route::get('admin/home', function () {
-    return view('backend.home');
-});
+//Route::get('admin/home', function () {
+//    return view('backend.home');
+//});
+
+//Route::get('admin/post', function () {
+//    return view('backend.post.post');
+//});
+
+//Route::get('admin/tag', function () {
+//    return view('backend.tag.tag');
+//});
+
+//Route::get('admin/category', function () {
+//    return view('backend.category.category');
+//});
 
 Route::get('admin/post', function () {
-    return view('backend.post.post');
-});
-
-Route::get('admin/tag', function () {
-    return view('backend.tag.tag');
+    return view('admin.post.post');
 });
 
 Route::get('admin/category', function () {
-    return view('backend.category.category');
+    return view('admin.category.category');
+});
+
+Route::get('admin/tag', function () {
+    return view('admin.tag.tag');
 });
