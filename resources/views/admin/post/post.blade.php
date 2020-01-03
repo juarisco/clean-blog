@@ -13,7 +13,7 @@
 
 @section('content')
     <div class="row">
-        <form action="" method="post">
+        <form action="{{ route('post.store') }}" method="post">
             {{ csrf_field() }}
 
             <div class="col-md-8">
@@ -44,10 +44,10 @@
                                     <i class="fa fa-minus"></i></button>
 
                                 <!-- /. tools -->
-                                <label for="description">Description</label>
+                                <label for="body">Body</label>
                             </div>--}}
-                            <label for="description">Description</label>
-                            <textarea name="description" class="textarea" placeholder="Place some text here"
+                            <label for="body">Body</label>
+                            <textarea name="body" class="textarea" placeholder="Place some text here"
                                       style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                         </div>
                     </div>
