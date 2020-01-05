@@ -18,8 +18,9 @@
             <div class="box box-primary">
 
                 <div class="box-body">
+                    @include('includes.messages')
 
-                    <form action="" method="post">
+                    <form action="{{ route('category.store') }}" method="post">
                         {{ csrf_field() }}
 
                         <div class="form-group">
@@ -32,7 +33,8 @@
                             <input type="text" name="slug" id="slug" class="form-control" placeholder="Category slug..." value="{{ old('slug') }}">
                         </div>
 
-                        <button class="btn btn-primary btn-block">Submit</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <a href="{{ route('category.index') }}" class="btn btn-warning">Back</a>
                     </form>
                 </div>
             </div>

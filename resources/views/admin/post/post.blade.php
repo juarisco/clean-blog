@@ -13,6 +13,7 @@
 
 @section('content')
     <div class="row">
+        @include('includes.messages')
         <form action="{{ route('post.store') }}" method="post">
             {{ csrf_field() }}
 
@@ -67,7 +68,8 @@
                         </div>
                     </div>
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-primary btn-block">Save Post</button>
+                        <button type="submit" class="btn btn-primary">Save Post</button>
+                        <a href="{{ route('post.index') }}" class="btn btn-warning">Back</a>
                     </div>
                 </div>
             </div>

@@ -18,8 +18,8 @@
             <div class="box box-primary">
 
                 <div class="box-body">
-
-                    <form action="" method="post">
+                    @include('includes.messages')
+                    <form action="{{ route('tag.store') }}" method="post">
                         {{ csrf_field() }}
 
                         <div class="form-group">
@@ -32,7 +32,8 @@
                             <input type="text" name="slug" id="slug" class="form-control" placeholder="Tag slug..." value="{{ old('slug') }}">
                         </div>
 
-                        <button class="btn btn-primary btn-block">Submit</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <a href="{{ route('tag.index') }}" class="btn btn-warning">Back</a>
                     </form>
                 </div>
             </div>
