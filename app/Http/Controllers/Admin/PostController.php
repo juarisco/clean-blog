@@ -69,34 +69,53 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
-     * @return \Illuminate\Http\Response
+     * @param Post $post
+     * @return Post
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        return view('admin.post.edit', compact('post'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param int $id
-     * @return \Illuminate\Http\Response
+     * @param Post $post
+     * @return array
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required|min:3',
+            'subtitle' => 'required',
+            'slug' => 'required',
+            'body' => 'required',
+        ]);
+
+        $post->title = $request->title;
+        $post->subtitle = $request->subtitle;
+        $post->slug = $request->slug;
+        $post->body = $request->body;
+        $post->status = (boolean) $request->status;
+        $post->save();
+
+//        $post->update($request->all());
+
+        return redirect()->route('post.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
+     * @param Post $post
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        $post->delete();
+
+        return redirect()->back();
     }
 }

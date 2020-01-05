@@ -27,7 +27,7 @@
                     <th>Post Title</th>
                     <th>Post Subtitle</th>
                     <th>Slug</th>
-                    <th>Date</th>
+                    <th>Created At</th>
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>
@@ -40,8 +40,25 @@
                         <td>{{ $post->subtitle }}</td>
                         <td>{{ $post->slug }}</td>
                         <td>{{ $post->created_at }}</td>
-                        <td>Edit</td>
-                        <td>Delete</td>
+                        <td><a href="{{ route('post.edit', $post) }}"><span class="glyphicon glyphicon-edit"></span></a>
+                        </td>
+                        <td>
+                            <form id="delete-form-{{ $post->id }}" style="display: none"
+                                  action="{{ route('post.destroy', $post) }}" method="post">
+                                {{ csrf_field() }} {{ method_field('DELETE') }}
+
+                            </form>
+                            <a href=""
+                               onclick="if (confirm('Are you sure, You want to delete this?')){
+                                       event.preventDefault();
+                                       document.getElementById('delete-form-{{ $post->id }}').submit();
+                                       }
+                                       else {
+                                       event.preventDefault()
+                                       }">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </a>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>
@@ -51,7 +68,7 @@
                     <th>Post Title</th>
                     <th>Post Subtitle</th>
                     <th>Slug</th>
-                    <th>Date</th>
+                    <th>Created At</th>
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>
