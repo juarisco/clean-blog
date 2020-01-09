@@ -27,7 +27,8 @@
                         </div>
                         <div class="form-group">
                             <label for="subtitle">Post Sub Title</label>
-                            <input type="text" class="form-control" id="subtitle" name="subtitle" value="{{ $post->subtitle }}"
+                            <input type="text" class="form-control" id="subtitle" name="subtitle"
+                                   value="{{ $post->subtitle }}"
                                    placeholder="Sub Title">
                         </div>
                         <div class="form-group">
@@ -47,6 +48,34 @@
             <div class="col-md-4">
                 <div class="box box-primary">
                     <div class="box-body">
+                        <div class="form group">
+                            <div class="form-group">
+                                <label>Select Tags</label>
+                                <select class="form-control select2"
+                                        name="categories[]"
+                                        multiple="multiple"
+                                        data-placeholder="Select one or more tags"
+                                        style="width: 100%;">
+                                    @foreach($tags as $tag)
+                                        <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form group">
+                            <div class="form-group">
+                                <label>Select Categories</label>
+                                <select class="form-control select2"
+                                        name="tags[]"
+                                        multiple="multiple"
+                                        data-placeholder="Select one or more categories"
+                                        style="width: 100%;">
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label for="image">File input</label>
                             <input type="file" name="image" id="image">
@@ -68,14 +97,23 @@
 @endsection
 
 @push('styles')
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{ asset('adminlte/bower_components/select2/dist/css/select2.min.css') }}">
+
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="{{ asset('adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
 @endpush
 
 @push('scripts')
+    <!-- Select2 -->
+    <script src="{{ asset('adminlte/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
+
     <!-- Bootstrap WYSIHTML5 -->
     <script src="{{ asset('adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}"></script>
     <script>
+        //Initialize Select2 Elements
+        $('.select2').select2()
+
         //bootstrap WYSIHTML5 - text editor
         $('.textarea').wysihtml5()
     </script>
