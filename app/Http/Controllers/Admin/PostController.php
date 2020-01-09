@@ -83,6 +83,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        $post = $post->load('tags', 'categories');
+//        return $post;
         $tags = Tag::all();
         $categories = Category::all();
 
