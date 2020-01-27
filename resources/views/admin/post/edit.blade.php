@@ -13,34 +13,54 @@
 
 @section('content')
     <div class="row">
-        @include('includes.messages')
+        {{--@include('includes.messages')--}}
         <form action="{{ route('post.update', $post) }}" method="post">
             {{ csrf_field() }} {{ method_field('PUT') }}
 
             <div class="col-md-8">
                 <div class="box box-primary">
                     <div class="box-body">
-                        <div class="form-group">
+                        <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                             <label for="title">Post Title</label>
                             <input type="text" class="form-control" id="title" name="title" value="{{ $post->title }}"
                                    placeholder="Title">
+                            @if ($errors->has('title'))
+                                <span class="help-block" role="alert">
+                                    <strong>{{ $errors->first('title') }}</strong>
+                                </span>
+                            @endif
                         </div>
-                        <div class="form-group">
+                        <div class="form-group{{ $errors->has('subtitle') ? ' has-error' : '' }}">
                             <label for="subtitle">Post Sub Title</label>
                             <input type="text" class="form-control" id="subtitle" name="subtitle"
                                    value="{{ $post->subtitle }}"
                                    placeholder="Sub Title">
+                            @if ($errors->has('subtitle'))
+                                <span class="help-block" role="alert">
+                                    <strong>{{ $errors->first('subtitle') }}</strong>
+                                </span>
+                            @endif
                         </div>
-                        <div class="form-group">
+                        <div class="form-group{{ $errors->has('slug') ? ' has-error' : '' }}">
                             <label for="slug">Post Slug</label>
                             <input type="text" class="form-control" id="slug" name="slug" value="{{ $post->slug }}"
                                    placeholder="Slug">
+                            @if ($errors->has('slug'))
+                                <span class="help-block" role="alert">
+                                    <strong>{{ $errors->first('slug') }}</strong>
+                                </span>
+                            @endif
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group{{ $errors->has('body') ? ' has-error' : '' }}">
                             <label for="body">Body</label>
                             <textarea name="body" class="textarea" placeholder="Place some text here"
                                       style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{ $post->body }}</textarea>
+                            @if ($errors->has('body'))
+                                <span class="help-block" role="alert">
+                                    <strong>{{ $errors->first('body') }}</strong>
+                                </span>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -49,7 +69,7 @@
                 <div class="box box-primary">
                     <div class="box-body">
                         <div class="form group">
-                            <div class="form-group">
+                            <div class="form-group{{ $errors->has('tags') ? ' has-error' : '' }}">
                                 <label>Select Tags</label>
                                 <select class="form-control select2"
                                         name="categories[]"
@@ -67,13 +87,18 @@
 
                                     @endforeach
                                 </select>
+                                @if ($errors->has('tags'))
+                                <span class="help-block" role="alert">
+                                    <strong>{{ $errors->first('tags') }}</strong>
+                                </span>
+                                @endif
                             </div>
                         </div>
                         <div class="form group">
-                            <div class="form-group">
+                            <div class="form-group{{ $errors->has('categories') ? ' has-error' : '' }}">
                                 <label>Select Categories</label>
                                 <select class="form-control select2"
-                                        name="tags[]"
+                                        name="categories[]"
                                         multiple="multiple"
                                         data-placeholder="Select one or more categories"
                                         style="width: 100%;">
@@ -87,6 +112,11 @@
                                         >{{ $category->name }}</option>
                                     @endforeach
                                 </select>
+                                @if ($errors->has('categories'))
+                                    <span class="help-block" role="alert">
+                                        <strong>{{ $errors->first('categories') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
                         <div class="form-group">
