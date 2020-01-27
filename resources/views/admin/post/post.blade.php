@@ -96,7 +96,10 @@
                                         data-placeholder="Select one or more tags"
                                         style="width: 100%;">
                                     @foreach($tags as $tag)
-                                        <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                        {{-- <option value="{{ $tag->id }}">{{ $tag->name }}</option>--}}
+                                        <option {{ collect(old('tags'))->contains($tag->id) ? 'selected' : '' }}
+                                                value="{{ $tag->id }}"
+                                        >{{ $tag->name }}</option>
                                     @endforeach
                                 </select>
                                 @if ($errors->has('tags'))
@@ -115,7 +118,10 @@
                                         data-placeholder="Select one or more categories"
                                         style="width: 100%;">
                                     @foreach($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        {{-- <option value="{{ $category->id }}">{{ $category->name }}</option>--}}
+                                        <option {{ collect(old('categories'))->contains($category->id) ? 'selected' : '' }}
+                                                value="{{ $category->id }}"
+                                        >{{ $category->name }}</option>
                                     @endforeach
                                 </select>
                                 @if ($errors->has('categories'))

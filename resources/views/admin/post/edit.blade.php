@@ -72,19 +72,14 @@
                             <div class="form-group{{ $errors->has('tags') ? ' has-error' : '' }}">
                                 <label>Select Tags</label>
                                 <select class="form-control select2"
-                                        name="categories[]"
+                                        name="tags[]"
                                         multiple="multiple"
                                         data-placeholder="Select one or more tags"
                                         style="width: 100%;">
                                     @foreach($tags as $tag)
-                                        <option value="{{ $tag->id }}"
-                                            @foreach($post->tags as $postTag)
-                                                @if($postTag->id==$tag->id)
-                                                    selected
-                                                @endif
-                                            @endforeach
+                                        <option {{ collect(old('tags'))->contains($tag->id) ? 'selected' : '' }}
+                                                value="{{ $tag->id }}"
                                         >{{ $tag->name }}</option>
-
                                     @endforeach
                                 </select>
                                 @if ($errors->has('tags'))
@@ -103,12 +98,8 @@
                                         data-placeholder="Select one or more categories"
                                         style="width: 100%;">
                                     @foreach($categories as $category)
-                                        <option value="{{ $category->id }}"
-                                            @foreach($post->categories as $postcategory)
-                                                @if($postcategory->id==$category->id)
-                                                    selected
-                                                @endif
-                                            @endforeach
+                                        <option {{ collect(old('categories'))->contains($category->id) ? 'selected' : '' }}
+                                                value="{{ $category->id }}"
                                         >{{ $category->name }}</option>
                                     @endforeach
                                 </select>
