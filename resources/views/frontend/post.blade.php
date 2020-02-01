@@ -40,3 +40,11 @@
 <hr>
 
 @endsection
+
+@push('styles')
+<link rel="stylesheet" href="{{ asset('frontend/css/prism.css') }}">
+@endpush
+
+@push('scripts')
+<script src="{{ asset('frontend/js/prism.js') }}"></script>
+@endpush

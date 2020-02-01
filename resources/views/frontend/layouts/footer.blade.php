@@ -40,3 +40,5 @@
 
 <!-- Custom scripts for this template -->
 <script src="{{ asset('frontend/js/clean-blog.min.js') }}"></script>
+
+@stack('scripts')

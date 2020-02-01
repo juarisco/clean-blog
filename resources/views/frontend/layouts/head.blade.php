@@ -17,3 +17,5 @@
 
 <!-- Custom styles for this template -->
 <link href="{{ asset('frontend/css/clean-blog.min.css') }}" rel="stylesheet">
+
+@stack('styles')
