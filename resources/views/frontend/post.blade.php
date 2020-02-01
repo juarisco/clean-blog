@@ -14,19 +14,24 @@
                 <small>Created at {{ $post->created_at->diffForHumans() }}</small>
 
                 @foreach($post->categories as $category)
-                    <small class="float-right" style="margin-right: 20px">
-                        {{ $category->name }}
-                    </small>
+                <small class="float-right" style="margin-right: 20px">
+                    {{ $category->name }}
+                </small>
                 @endforeach
 
                 {!! htmlspecialchars_decode($post->body) !!}
 
-                <h3>Tags Clouds</h3>
+                <h3>Comments</h3>
                 @foreach($post->tags as $tag)
-                    <small class="float-left" style="margin-right: 20px; border-radius: 5px; border: 1px solid gray; padding: 5px;">
-                        {{ $tag->name }}
-                    </small>
+                <small class="float-left"
+                    style="margin-right: 20px; border-radius: 5px; border: 1px solid gray; padding: 5px;">
+                    {{ $tag->name }}
+                </small>
                 @endforeach
+
+                <div id="disqus_thread"></div>
+                @include('includes.disqus-script')
+
             </div>
         </div>
     </div>
