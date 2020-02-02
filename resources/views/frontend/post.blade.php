@@ -14,19 +14,23 @@
                 <small>Created at {{ $post->created_at->diffForHumans() }}</small>
 
                 @foreach($post->categories as $category)
-                <small class="float-right" style="margin-right: 20px">
-                    {{ $category->name }}
-                </small>
+                <a href="{{ route('category', $category) }}">
+                    <small class="float-right" style="margin-right: 20px">
+                        {{ $category->name }}
+                    </small>
+                </a>
                 @endforeach
 
                 {!! htmlspecialchars_decode($post->body) !!}
 
                 <h3>Comments</h3>
                 @foreach($post->tags as $tag)
-                <small class="float-left"
-                    style="margin-right: 20px; border-radius: 5px; border: 1px solid gray; padding: 5px;">
-                    {{ $tag->name }}
-                </small>
+                <a href="{{ route('tag', $tag) }}">
+                    <small class="float-left"
+                        style="margin-right: 20px; border-radius: 5px; border: 1px solid gray; padding: 5px;">
+                        {{ $tag->name }}
+                    </small>
+                </a>
                 @endforeach
 
                 <div id="disqus_thread"></div>

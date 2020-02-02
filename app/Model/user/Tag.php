@@ -8,6 +8,11 @@ class Tag extends Model
 {
     public function posts()
     {
-        return $this->belongsToMany(Post::class);
+        return $this->belongsToMany(Post::class)->orderBy('created_at', 'DESC')->simplePaginate(5);
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 }
